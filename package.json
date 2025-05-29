@@ -1,0 +1,17 @@
+{
+  "name": "uao-theme",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev:css": "npx @tailwindcss/cli -i ./UAO-Theme/css/input.css -o ./UAO-Theme/css/main.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.7",
+    "tailwindcss": "^4.1.7"
+  }
+}
+

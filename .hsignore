@@ -1,0 +1,16 @@
+# Ignorar CSS fuente
+**/input.css
+
+# Ignorar archivos innecesarios
+**/.DS_Store
+**/node_modules/
+**/.gitignore
+**/README.md
+**/.env
+**/tailwind.config.js
+**/postcss.config.js
+**/tailwindcss
+**/tailwindcss.exe
+**/package.json
+**/package-lock.json
+**/hubspot.config.yml
