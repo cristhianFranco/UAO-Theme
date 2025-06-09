@@ -1,17 +1,22 @@
-on:
-  push:
-    branches:
-    - main
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: HubSpot Deploy Action
-        uses: HubSpot/hubspot-cms-deploy-action@v2.0.1
-        with:
-          src_dir: . ## ex. src
-          dest_dir: UAO-Theme ## ex. my-theme
-          account_id: ${{ vars.hubspot_account_id || secrets.hubspot_portal_id }}
-          personal_access_key: ${{ secrets.hubspot_personal_access_key }}
+stages:
+  - deploy
+
+variables:
+  SRC_DIR: "."
+  DEST_DIR: "UAO-Theme"
+
+deploy_to_hubspot:
+  stage: deploy
+  image: ubuntu:latest
+  
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+  
+  before_script:
+    - apt-get update -qy
+    - apt-get install -y curl git nodejs npm
+    
+    - npm install -g @hubspot/cli
+  
+  script:
+    - hs auth personalaccesskey --account=$HUBSPOT_ACCOUNT_ID --key=$HUBSPOT_PERSONAL_ACCESS_KEY
